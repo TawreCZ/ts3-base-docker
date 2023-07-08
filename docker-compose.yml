@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  teamspeak:
+    image: teamspeak:latest
+    restart: always
+    ports:
+      - 9987:9987/udp
+      - 10011:10011
+      - 30033:30033
+    environment:
+      TS3SERVER_LICENSE: accept
+      TS3SERVER_DB_PLUGINPARAMETER: ""
+      TS3SERVER_IP_ALLOWLIST: /var/ts3server/query_ip_whitelist.txt
+      TS3SERVER_IP_BLOCKLIST: /var/ts3server/query_ip_blacklist.txt
+      TS3SERVER_LICENSEPATH: /var/ts3server
+      
+    volumes:
+      - ./data:/var/ts3server
+      
+
